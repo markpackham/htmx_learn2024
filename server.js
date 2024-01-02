@@ -100,9 +100,30 @@ app.post("/search", (req, res) => {
   const searchResults = contacts.filter((contact) => {
     const name = contact.name.toLowerCase();
     const email = contact.email.toLowerCase();
+
+    return name.includes(searchTerm) || email.includes(searchTerm);
   });
 
-  setTimeout(() => {}, 2000);
+  // Optional delay just to show off loader with 1 second timeout
+  setTimeout(() => {
+    const searchResultsHtml = searchResults
+      .map(
+        (contact) => `<tr>
+      <td>
+    <div className="my-4 p-2">
+    ${contact.name}
+    </div>
+    </td>
+    <td>
+    <div className="my-4 p-2">
+    ${contact.email}
+    </div>
+    </td>
+    </tr>`
+      )
+      .join("");
+    res.send(searchResultsHtml);
+  }, 1000);
 });
 
 // Start server
