@@ -56,6 +56,17 @@ app.post("/convert", (req, res) => {
   }, 2000);
 });
 
+// GET request for polling
+let counter = 0;
+
+app.get("/poll", (req, res) => {
+  counter++;
+  res.send(`
+    <h1>Polling</h1>
+    <p>Counter: ${counter}</p>
+  `);
+});
+
 // Start server
 // http://localhost:3000/
 app.listen(3000, () => {
