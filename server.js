@@ -11,7 +11,7 @@ app.use(experess.json());
 
 // Routes
 
-// Fetch users
+// GET users
 app.get("/users", async (req, res) => {
   //   const users = [
   //     { id: 1, name: "John Doe" },
@@ -36,6 +36,11 @@ app.get("/users", async (req, res) => {
     </ul>
   `);
   }, 2000);
+});
+
+// POST request for temp conversion
+app.post("/", async (req, res) => {
+  setTimeout(async () => {}, 2000);
 });
 
 // Start server
