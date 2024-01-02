@@ -93,6 +93,15 @@ const contacts = [
 app.post("/search", (req, res) => {
   const searchTerm = req.body.search.toLowerCase();
 
+  if (!searchTerm) {
+    return res.send("<tr>Person does not exist</tr>");
+  }
+
+  const searchResults = contacts.filter((contact) => {
+    const name = contact.name.toLowerCase();
+    const email = contact.email.toLowerCase();
+  });
+
   setTimeout(() => {}, 2000);
 });
 
