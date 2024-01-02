@@ -1,0 +1,2 @@
+htmx is popular when used with Django & other Fullstack frameworks
+You'd use it as a lighter alternative to React & Vue but a more powerful solution to using Alpine.js
