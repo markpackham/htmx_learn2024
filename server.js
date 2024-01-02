@@ -41,16 +41,18 @@ app.get("/users", async (req, res) => {
 
 // POST request for temp conversion
 // http://localhost:3000/temperature.html
-app.post("/", async (req, res) => {
-  setTimeout(async () => {
+app.post("/convert", (req, res) => {
+  setTimeout(() => {
     const fahrenheit = parseFloat(req.body.fahrenheit);
     const celsius = (fahrenheit - 32) * (5 / 9);
 
     res.send(`
-    <p>
-    ${fahrenheit} degrees Fahrenheit is ${celsius.toFixed(2)} degrees Celsius.
-    </p>
-    `);
+        <p>
+          ${fahrenheit} degrees Farenheit is equal to ${celsius.toFixed(
+      2
+    )} degrees Celsius
+        </p>
+      `);
   }, 2000);
 });
 
