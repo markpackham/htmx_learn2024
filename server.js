@@ -162,7 +162,63 @@ app.post("/search-api", async (req, res) => {
 
 // POST email validation
 // http://localhost:3000/validation.html
-app.post("/contact/email", (req, res) => {});
+app.post("/contact/email", (req, res) => {
+  const submittedEmail = req.body.email;
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  const isValid = {
+    message: "Email is valid!",
+    class: "text-green-700",
+  };
+
+  const isInvalid = {
+    message: "Email is NOT valid!!!",
+    class: "text-red-700",
+  };
+
+  // If email not valid replace the entire div
+  if (!emailRegex.test(submittedEmail)) {
+    res.send(`
+    <div class="mb-4" hx-target="this" hx-swap="outerHTML">
+    <label class="block text-gray-700 text-sm font-bold mb-2" for="email"
+      >Email Address</label
+    >
+    <input
+      name="email"
+      hx-post="/contact/email"
+      class="border rounded-lg py-2 px-3 w-full focus:outline-none focus:border-blue-500"
+      type="email"
+      id="email"
+      value="${submittedEmail}"
+      required
+    />
+    <div class="${isInvalid.class}">${isInvalid.message}</div>
+  </div>
+    `);
+  }
+  // If email valid
+  else {
+    return res.send(
+      `
+      <div class="mb-4" hx-target="this" hx-swap="outerHTML">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="email"
+        >Email Address</label
+      >
+      <input
+        name="email"
+        hx-post="/contact/email"
+        class="border rounded-lg py-2 px-3 w-full focus:outline-none focus:border-blue-500"
+        type="email"
+        id="email"
+        value="${submittedEmail}"
+        required
+      />
+      <div class="${isValid.class}">${isValid.message}</div>
+    </div>
+      `
+    );
+  }
+});
 
 // Start server
 // http://localhost:3000/
