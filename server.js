@@ -78,6 +78,24 @@ app.get("/weather", (req, res) => {
   res.send(currentTemperature.toFixed(2) + " degrees Celsius");
 });
 
+// POST request for contacts search
+// http://localhost:3000/search.html
+
+const contacts = [
+  { name: "John Doe", email: "john@example.com" },
+  { name: "Jane Doe", email: "jane@example.com" },
+  { name: "Alice Smith", email: "alice@example.com" },
+  { name: "Bob Williams", email: "bob@example.com" },
+  { name: "Mary Harris", email: "mary@example.com" },
+  { name: "David Mitchell", email: "david@example.com" },
+];
+
+app.post("/search", (req, res) => {
+  const searchTerm = req.body.search.toLowerCase();
+
+  setTimeout(() => {}, 2000);
+});
+
 // Start server
 // http://localhost:3000/
 app.listen(3000, () => {
