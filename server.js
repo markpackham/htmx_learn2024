@@ -57,14 +57,15 @@ app.post("/convert", (req, res) => {
 });
 
 // GET request for polling
+// http://localhost:3000/polling.html
 let counter = 0;
 
 app.get("/poll", (req, res) => {
   counter++;
-  res.send(`
-    <h1>Polling</h1>
-    <p>Counter: ${counter}</p>
-  `);
+  const data = { value: counter };
+
+  // Putting json in browser purely for demo purposes
+  res.json(data);
 });
 
 // Start server
