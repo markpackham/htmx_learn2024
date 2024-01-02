@@ -19,6 +19,7 @@ app.get("/users", async (req, res) => {
   //     { id: 3, name: "Shannon Jackson" },
   //   ];
 
+  // We just add a timeout so we can see the loading animation gif
   setTimeout(async () => {
     // Limit sent via "hx-vals", use 10 if not sent
     // use +req to convert string to number
@@ -39,8 +40,18 @@ app.get("/users", async (req, res) => {
 });
 
 // POST request for temp conversion
+// http://localhost:3000/temperature.html
 app.post("/", async (req, res) => {
-  setTimeout(async () => {}, 2000);
+  setTimeout(async () => {
+    const fahrenheit = parseFloat(req.body.fahrenheit);
+    const celsius = (fahrenheit - 32) * (5 / 9);
+
+    res.send(`
+    <p>
+    ${fahrenheit} degrees Fahrenheit is ${celsius.toFixed(2)} degrees Celsius.
+    </p>
+    `);
+  }, 2000);
 });
 
 // Start server
