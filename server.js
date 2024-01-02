@@ -68,6 +68,10 @@ app.get("/poll", (req, res) => {
   res.json(data);
 });
 
+// GET request for weather
+
+app.get("/weather", (req, res) => {});
+
 // Start server
 // http://localhost:3000/
 app.listen(3000, () => {
