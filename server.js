@@ -160,6 +160,10 @@ app.post("/search-api", async (req, res) => {
   }, 1000);
 });
 
+// POST email validation
+// http://localhost:3000/validation.html
+app.post("/contact/email", (req, res) => {});
+
 // Start server
 // http://localhost:3000/
 app.listen(3000, () => {
