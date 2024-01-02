@@ -69,8 +69,14 @@ app.get("/poll", (req, res) => {
 });
 
 // GET request for weather
+// http://localhost:3000/weather.html
+let currentTemperature = 20;
 
-app.get("/weather", (req, res) => {});
+app.get("/weather", (req, res) => {
+  // Random temperature change
+  currentTemperature += Math.random() * 2 - 1;
+  res.send(currentTemperature.toFixed(2) + " degrees Celsius");
+});
 
 // Start server
 // http://localhost:3000/
